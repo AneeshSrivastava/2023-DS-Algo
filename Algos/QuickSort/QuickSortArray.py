@@ -1,9 +1,4 @@
-arr=[0, 28, 45, 4, 6, 3, 1, 7, 9]
-
-def swap(arr, firstIndex, secondIndex):
-    temp = arr[firstIndex]
-    arr[firstIndex]=arr[secondIndex]
-    arr[secondIndex]=temp
+arr=[10, 28, 45, 4, 6, 3, 1, 7, 9]
 
 def quickSort(arr, start, end):
     if start>=end:
@@ -11,42 +6,30 @@ def quickSort(arr, start, end):
     
     # Find pivot index
     partitionIndex=partition(arr,start, end)
-
-    # place elements < pivot to left and elements>pivot to right
-    sortAroundPivot(arr, start, end, partitionIndex)
     
     # Sort left part:
-    quickSort(arr, start, partitionIndex)
+    quickSort(arr, start, partitionIndex-1)
 
     # Sort right part
     quickSort(arr, partitionIndex+1, end)
 
 
 def partition(arr, start, end):
-    pivotValue=arr[start]
-    # find right place for pivotValue place it in that place
-    count=0
-    for element in arr[start+1:]:
-        if element<= pivotValue:
-            count+=1
-    newIndex=start+count
-    swap(arr, start, newIndex)
-    return newIndex
+    pivotValue=arr[end]
+    i=start-1
 
-def sortAroundPivot(arr, start, end, pivotIndex):
-    # sort left and right part new place
-    i=start
-    j=end
-    while(i<pivotIndex and j>pivotIndex):
-        while arr[i]<=arr[pivotIndex]:
+    # Logic here is to swap the elements in the array so that elements 
+    # that are smaller than arr[end]/pivotValue move to left side of array
+    for j in range(start, end):
+        if arr[j]<=pivotValue:
             i+=1
-        while arr[j]>arr[pivotIndex]:
-            j-=1
+            arr[i], arr[j] = arr[j], arr[i]
     
-        if i<pivotIndex and j>pivotIndex:
-            swap(arr,i, j)
-            i+=1
-            j-=1
+    # As i+1 place would have the correct index of the pivot element 
+    # therefore with a swap, pivot element is at the right place.
+    arr[i+1], arr[end] = arr[end], arr[i+1]
+    return i+1
+
 
 print('Un-Sorted array: ', arr)
 quickSort(arr, 0, len(arr)-1)
