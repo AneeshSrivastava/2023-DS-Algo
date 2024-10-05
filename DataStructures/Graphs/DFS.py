@@ -13,7 +13,7 @@ def main():
         'I': ['D', 'F']
     }
     traversal_order = dfs(graph, 'A')
-    print(traversal_order)
+    print('DFS traversal order is: ', traversal_order)
 
 def dfs(graph, node, visited= None):
     # Implementing Depth First Search:

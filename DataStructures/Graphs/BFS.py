@@ -15,6 +15,10 @@ def main():
     
     # Implementing Breadth First Search:
     start_node = 'A'
+    traversal_order = bfs(graph, start_node)
+    print('BFS traversal order is: ', traversal_order)
+
+def bfs(graph, start_node):
     visited = [] # Not used set as it doesn't preserve the order of insertion which list does
     queue = deque([start_node])
     while queue:
@@ -25,7 +29,7 @@ def main():
             if neighbor not in visited:
                 visited.append(neighbor)
                 queue.append(neighbor)
-    print(visited)
+    return visited
 
 if __name__ == '__main__':
     main()
