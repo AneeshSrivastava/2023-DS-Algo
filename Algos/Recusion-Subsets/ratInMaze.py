@@ -58,9 +58,9 @@ def isSafe(maze, visited, new_x, new_y):
 
 
 if __name__=="__main__":
-    MAZE  = [[1, 1, 1, 1],
-            [1, 1, 1, 1],
-            [1, 1, 1, 1],
+    MAZE  = [[1, 1 , 0, 0],
+            [1, 1, 0, 0],
+            [1, 0, 0, 0],
             [1, 1, 1, 1]]
     if MAZE[0][0]==0: # In case the rat can't land on 0,0 then we have empty answer/path
         print("")
